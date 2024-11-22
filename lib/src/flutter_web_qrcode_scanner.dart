@@ -104,6 +104,7 @@ class _WebcamPageState extends State<FlutterWebQrcodeScanner> {
     if (_controller.isRecording) {
       _startVideoStream();
       
+      
       if(mounted){
         setState(() {});
       }
@@ -174,6 +175,7 @@ class _WebcamPageState extends State<FlutterWebQrcodeScanner> {
         });
       }
       _stopDecoding = true;
+      
       if(mounted){
         setState(() {});
       }
