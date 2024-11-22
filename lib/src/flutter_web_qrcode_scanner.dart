@@ -95,7 +95,7 @@ class _WebcamPageState extends State<FlutterWebQrcodeScanner> {
 
   @override
   void dispose() {
-    _stopVideoStream();
+    _stopVideoStream(0);
     _controller.removeListener(_cameraControllerListener);
     super.dispose();
   }
@@ -110,7 +110,7 @@ class _WebcamPageState extends State<FlutterWebQrcodeScanner> {
       }
     } else {
       // print('stop video stream ');
-      _stopVideoStream();
+      _stopVideoStream(1);
     }
   }
 
@@ -166,7 +166,7 @@ class _WebcamPageState extends State<FlutterWebQrcodeScanner> {
     }
   }
 
-  _stopVideoStream() async {
+  _stopVideoStream(i) async {
     if (_webcamVideoElement.srcObject?.active != null) {
       _webcamVideoElement.pause();
       if (_stream != null) {
@@ -176,7 +176,7 @@ class _WebcamPageState extends State<FlutterWebQrcodeScanner> {
       }
       _stopDecoding = true;
       
-      if(mounted){
+      if(i == 1 && mounted){
         setState(() {});
       }
     }
